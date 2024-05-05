@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216111935529",
+    "project_id": "app-memory-bridge",
+    "storage_bucket": "app-memory-bridge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216111935529:android:07f67dd2348eae37f7ec38",
+        "android_client_info": {
+          "package_name": "com.ash.app_memory_bridge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoF1hEhCfSwtdtcrLPcxk9VjkWKJIGkTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
