@@ -366,7 +366,7 @@ class _SecondTabState extends State<SecondTab> {
     } catch (e) {
       print('Error saving medical information: $e');
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('An error occurred while saving medical information!'),
+        content: Text('Exception: An error occurred while saving the medical information!'),
       ));
     }
   }
@@ -419,7 +419,7 @@ class ThirdTab extends StatelessWidget {
                 },
                 child: const Text('Log Out'),
               ),
-              SizedBox(height: 20), // Add some space between the buttons
+              SizedBox(height: 20), // To add some space between the buttons
               ElevatedButton(
                 onPressed: () async {
                   // Check if user is signed in
@@ -432,7 +432,6 @@ class ThirdTab extends StatelessWidget {
                     } catch (e) {
                       // Handle any errors here
                       print("Failed to delete account: $e");
-                      // You can also show an error dialog or message to the user here
                     }
                   }
                 },
