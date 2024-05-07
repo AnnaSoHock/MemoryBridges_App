@@ -16,8 +16,8 @@ class _DailyQuotesScreenState extends State<DailyQuotesScreen> {
   void initState() {
     super.initState();
     _loadImage();
-    // Timer to change photo after every 24hrs
-    Timer.periodic(const Duration(minutes: 1), (timer) {
+    // Timer to change photo after every 24hrs in minutes
+    Timer.periodic(const Duration(minutes: 1440), (timer) {
       _changeImage();
     });
   }

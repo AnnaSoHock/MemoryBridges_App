@@ -68,19 +68,7 @@ class MyApp extends StatelessWidget {
                       child: const Text('Getting Started', style: TextStyle(color: Colors.black, fontFamily: 'LibreBaskerville',)),
                     ),
                   ),
-                  // Builder defines build context within the widget tree/hierarchy
-                  //Builder(
-                  //  builder: (context) =>  ElevatedButton(
-                  // onPressed: () {
-                  // Navigate to sign up screen
-                  // Navigator.push(
-                  //     context,
-                  //    MaterialPageRoute(builder: (context) => SignUpScreen()),
-                  //);
-                  //},
-                  //child: const Text('Sign up'),
-                  //),
-                  //),
+
                   const SizedBox(height: 195),
                 ],
               ),

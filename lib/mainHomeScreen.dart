@@ -372,6 +372,7 @@ class _SecondTabState extends State<SecondTab> {
   }
 }
 
+
 class ThirdTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -386,26 +387,20 @@ class ThirdTab extends StatelessWidget {
           ),
         ),
         Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround, // Distribute space evenly
+          mainAxisAlignment: MainAxisAlignment.center, // Center vertically
           crossAxisAlignment: CrossAxisAlignment.center, // Center horizontally
           children: [
-            Center(
-              child: Text(
-                '"The mind may not remember, but the heart will never forget."',
-                textAlign: TextAlign.center, // Center text
-                style: TextStyle(
-                  color: Colors.grey[800],
-                  fontStyle: FontStyle.italic,
+            Padding(
+              padding: const EdgeInsets.only(top: 300.0), // Add padding to the top
+              child: Center(
+                child: Text(
+                  '"The mind may not remember, but the heart will never forget."',
+                  textAlign: TextAlign.center, // Center text
+                  style: TextStyle(
+                    color: Colors.grey[800],
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
-              ),
-            ),
-            Center(
-              child: ElevatedButton(
-                onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
-                },
-                child: const Text('Log Out'),
               ),
             ),
           ],
@@ -414,16 +409,40 @@ class ThirdTab extends StatelessWidget {
           bottom: 20, // Adjust the bottom position as needed
           left: 20, // Adjust the left position as needed
           right: 20, // Adjust the right position as needed
-          child: Text(
-            '',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.grey[400],
-              fontStyle: FontStyle.italic,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
+                },
+                child: const Text('Log Out'),
+              ),
+              SizedBox(height: 20), // Add some space between the buttons
+              ElevatedButton(
+                onPressed: () async {
+                  // Check if user is signed in
+                  if (FirebaseAuth.instance.currentUser != null) {
+                    // Delete user account and associated data
+                    try {
+                      await FirebaseAuth.instance.currentUser!.delete();
+                      // After successful deletion, navigate to the login screen
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
+                    } catch (e) {
+                      // Handle any errors here
+                      print("Failed to delete account: $e");
+                      // You can also show an error dialog or message to the user here
+                    }
+                  }
+                },
+                child: const Text('Delete Account'),
+              ),
+            ],
           ),
         ),
       ],
     );
   }
 }
+
